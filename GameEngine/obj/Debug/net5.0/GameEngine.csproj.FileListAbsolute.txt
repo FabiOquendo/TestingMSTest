@@ -1,0 +1,12 @@
+Z:\Dev\NetCore\MSTest\Game\GameEngine\bin\Debug\net5.0\GameEngine.deps.json
+Z:\Dev\NetCore\MSTest\Game\GameEngine\bin\Debug\net5.0\GameEngine.dll
+Z:\Dev\NetCore\MSTest\Game\GameEngine\bin\Debug\net5.0\ref\GameEngine.dll
+Z:\Dev\NetCore\MSTest\Game\GameEngine\bin\Debug\net5.0\GameEngine.pdb
+Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.GeneratedMSBuildEditorConfig.editorconfig
+Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.AssemblyInfoInputs.cache
+Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.AssemblyInfo.cs
+Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.csproj.CoreCompileInputs.cache
+Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.dll
+Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\ref\GameEngine.dll
+Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.pdb
+Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.csproj.AssemblyReference.cache
