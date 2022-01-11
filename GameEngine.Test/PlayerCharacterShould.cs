@@ -8,6 +8,8 @@ namespace GameEngine.Test
     public class PlayerCharacterShould
     {
         [TestMethod]
+        [TestCategory("Player Default")]
+        //[Ignore]
         public void BeInexperiencedWhenNew()
         {
             // Arrange
@@ -21,6 +23,8 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Default")]
+        //[Ignore("Temporarily disable for refactoring")]
         public void NotHaveNickNameByDefault()
         {
             // Arrange
@@ -34,6 +38,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Default")]
         public void StartWithDefaultHealth()
         {
             // Arrange
@@ -47,6 +52,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Heakth")]
         public void TakeDamage()
         {
             // Arrange
@@ -60,6 +66,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Heakth")]
         public void TakeDamage_NotEqual()
         {
             // Arrange
@@ -73,6 +80,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Heakth")]
         public void IncreaseHealthAfterSleeping()
         {
             // Arrange
@@ -86,6 +94,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Name")]
         public void CalculateFullName()
         {
             // Arrange
@@ -100,6 +109,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Name")]
         public void HaveFullNameStartingWithFirstName()
         {
             // Arrange
@@ -114,6 +124,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Name")]
         public void HaveFullNameEndingWithFirstName()
         {
             // Arrange
@@ -128,6 +139,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Name")]
         public void CalculateFullName_SubstringAssertExample()
         {
             // Arrange
@@ -142,6 +154,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Name")]
         public void CalculateFullNameWithTitleCase()
         {
             // Arrange
@@ -156,6 +169,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Weapons")]
         public void HaveALongBow()
         {
             // Arrange
@@ -169,6 +183,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Weapons")]
         public void NotHaveAStaffOfWonder()
         {
             // Arrange
@@ -182,6 +197,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Weapons")]
         public void HaveAllExpectedWeapons()
         {
             // Arrange
@@ -201,6 +217,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Weapons")]
         public void HaveAllExpectedWeapons_AnyOrder()
         {
             // Arrange
@@ -220,6 +237,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Weapons")]
         public void HaveNoDuplicateWeapons()
         {
             // Arrange
@@ -233,6 +251,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Weapons")]
         public void HaveAtLeastOneKindOfSword()
         {
             // Arrange
@@ -246,6 +265,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Weapons")]
         public void HaveNoEmptyDefaultWeapons()
         {
             // Arrange
