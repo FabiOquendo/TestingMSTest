@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -18,6 +18,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GameEngine\GameEngine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Damage.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

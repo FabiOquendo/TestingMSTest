@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -7,6 +8,33 @@ namespace GameEngine.Test
     [TestClass]
     public class PlayerCharacterShould
     {
+        public static IEnumerable<object[]> Damages
+        {
+            get
+            {
+                return new List<object[]>
+                {
+                    new object[] {0, 100},
+                    new object[] {1, 99},
+                    new object[] {50, 50},
+                    new object[] {99, 1},
+                    new object[] {100, 1},
+                };
+            }
+        }
+
+        public static IEnumerable<object[]> GetDamages()
+        {
+            return new List<object[]>
+            {
+                new object[] {0, 100},
+                new object[] {1, 99},
+                new object[] {50, 50},
+                new object[] {98, 2},
+                new object[] {100, 1},
+            };
+        }
+
         [TestMethod]
         [TestCategory("Player Default")]
         //[Ignore]
@@ -51,18 +79,26 @@ namespace GameEngine.Test
             Assert.AreEqual(100, sut.Health);
         }
 
-        [TestMethod]
+        [DataTestMethod]
+        [DynamicData(nameof(ExternalHealthDamageTestData.TestData), typeof(ExternalHealthDamageTestData))]
+        //[DynamicData(nameof(DamageData.GetDamages), typeof(DamageData), DynamicDataSourceType.Method)]
+        //[DynamicData(nameof(GetDamages), DynamicDataSourceType.Method)]
+        //[DynamicData(nameof(Damages))]
+        //[DataRow(0, 100)]
+        //[DataRow(1, 99)]
+        //[DataRow(50, 50)]
+        //[DataRow(100, 1)]
         [TestCategory("Player Heakth")]
-        public void TakeDamage()
+        public void TakeDamage(int damage, int expectedHealth)
         {
             // Arrange
             PlayerCharacter sut = new PlayerCharacter();
 
             // Act
-            sut.TakeDamage(1);
+            sut.TakeDamage(damage);
 
             // Assert
-            Assert.AreEqual(99, sut.Health);
+            Assert.AreEqual(expectedHealth, sut.Health);
         }
 
         [TestMethod]

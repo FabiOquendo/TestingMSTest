@@ -100,3 +100,4 @@ Z:\Dev\NetCore\MSTest\Game\GameEngine.Test\obj\Debug\net5.0\GameEngine.Test.dll
 Z:\Dev\NetCore\MSTest\Game\GameEngine.Test\obj\Debug\net5.0\ref\GameEngine.Test.dll
 Z:\Dev\NetCore\MSTest\Game\GameEngine.Test\obj\Debug\net5.0\GameEngine.Test.pdb
 Z:\Dev\NetCore\MSTest\Game\GameEngine.Test\obj\Debug\net5.0\GameEngine.Test.genruntimeconfig.cache
+Z:\Dev\NetCore\MSTest\Game\GameEngine.Test\bin\Debug\net5.0\Damage.csv

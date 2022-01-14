@@ -9,4 +9,3 @@ Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.csproj.CoreCom
 Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.dll
 Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\ref\GameEngine.dll
 Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.pdb
-Z:\Dev\NetCore\MSTest\Game\GameEngine\obj\Debug\net5.0\GameEngine.csproj.AssemblyReference.cache
