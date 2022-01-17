@@ -1,6 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace GameEngine.Test
@@ -8,6 +7,18 @@ namespace GameEngine.Test
     [TestClass]
     public class PlayerCharacterShould
     {
+        PlayerCharacter sut;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            sut = new PlayerCharacter
+            {
+                FirstName = "Fabio",
+                LastName = "Oquendo"
+            };
+        }
+
         public static IEnumerable<object[]> Damages
         {
             get
@@ -36,51 +47,34 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
-        [TestCategory("Player Default")]
+        [PlayerDefaults]
         //[Ignore]
         public void BeInexperiencedWhenNew()
         {
-            // Arrange
-            PlayerCharacter sut;
-
-            // Act
-            sut = new PlayerCharacter();
-
             // Assert
             Assert.IsTrue(sut.IsNoob);
         }
 
         [TestMethod]
-        [TestCategory("Player Default")]
+        [PlayerDefaults]
         //[Ignore("Temporarily disable for refactoring")]
         public void NotHaveNickNameByDefault()
         {
-            // Arrange
-            PlayerCharacter sut;
-
-            // Act
-            sut = new PlayerCharacter();
-
             // Assert
             Assert.IsNull(sut.NickName);
         }
 
         [TestMethod]
-        [TestCategory("Player Default")]
+        [PlayerDefaults]
         public void StartWithDefaultHealth()
         {
-            // Arrange
-            PlayerCharacter sut;
-
-            // Act
-            sut = new PlayerCharacter();
-
             // Assert
             Assert.AreEqual(100, sut.Health);
         }
 
         [DataTestMethod]
-        [DynamicData(nameof(ExternalHealthDamageTestData.TestData), typeof(ExternalHealthDamageTestData))]
+        [CsvDataSource("Damage.csv")]
+        //[DynamicData(nameof(ExternalHealthDamageTestData.TestData), typeof(ExternalHealthDamageTestData))]
         //[DynamicData(nameof(DamageData.GetDamages), typeof(DamageData), DynamicDataSourceType.Method)]
         //[DynamicData(nameof(GetDamages), DynamicDataSourceType.Method)]
         //[DynamicData(nameof(Damages))]
@@ -88,12 +82,9 @@ namespace GameEngine.Test
         //[DataRow(1, 99)]
         //[DataRow(50, 50)]
         //[DataRow(100, 1)]
-        [TestCategory("Player Heakth")]
+        [PlayerHealth]
         public void TakeDamage(int damage, int expectedHealth)
         {
-            // Arrange
-            PlayerCharacter sut = new PlayerCharacter();
-
             // Act
             sut.TakeDamage(damage);
 
@@ -102,12 +93,9 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
-        [TestCategory("Player Heakth")]
+        [PlayerHealth]
         public void TakeDamage_NotEqual()
         {
-            // Arrange
-            PlayerCharacter sut = new PlayerCharacter();
-
             // Act
             sut.TakeDamage(1);
 
@@ -116,128 +104,78 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
-        [TestCategory("Player Heakth")]
+        [PlayerHealth]
         public void IncreaseHealthAfterSleeping()
         {
-            // Arrange
-            PlayerCharacter sut = new PlayerCharacter();
-
             // Act
             sut.Sleep();
 
             // Assert
-            Assert.IsTrue(sut.Health >= 101 && sut.Health <= 200);
+            //Assert.IsTrue(sut.Health >= 101 && sut.Health <= 200);
+            Assert.That.IsInRange(sut.Health, 101, 200);
         }
 
         [TestMethod]
-        [TestCategory("Player Name")]
+        [PlayerName]
         public void CalculateFullName()
         {
-            // Arrange
-            PlayerCharacter sut = new PlayerCharacter();
-
-            // Act
-            sut.FirstName = "Fabio";
-            sut.LastName = "Oquendo";
-
             // Assert
             Assert.AreEqual("Fabio Oquendo", sut.FullName);
         }
 
         [TestMethod]
-        [TestCategory("Player Name")]
+        [PlayerName]
         public void HaveFullNameStartingWithFirstName()
         {
-            // Arrange
-            PlayerCharacter sut = new PlayerCharacter();
-
-            // Act
-            sut.FirstName = "Fabio";
-            sut.LastName = "Oquendo";
-
             // Assert
             StringAssert.StartsWith(sut.FullName, "Fabio");
         }
 
         [TestMethod]
-        [TestCategory("Player Name")]
+        [PlayerName]
         public void HaveFullNameEndingWithFirstName()
         {
-            // Arrange
-            PlayerCharacter sut = new PlayerCharacter();
-
-            // Act
-            sut.FirstName = "Fabio";
-            sut.LastName = "Oquendo";
-
             // Assert
             StringAssert.EndsWith(sut.FullName, "Oquendo");
         }
 
         [TestMethod]
-        [TestCategory("Player Name")]
+        [PlayerName]
         public void CalculateFullName_SubstringAssertExample()
         {
-            // Arrange
-            PlayerCharacter sut = new PlayerCharacter();
-
-            // Act
-            sut.FirstName = "Fabio";
-            sut.LastName = "Oquendo";
-
             // Assert
             StringAssert.Contains(sut.FullName, "io Oq");
         }
 
         [TestMethod]
-        [TestCategory("Player Name")]
+        [PlayerName]
         public void CalculateFullNameWithTitleCase()
         {
-            // Arrange
-            PlayerCharacter sut = new PlayerCharacter();
-
-            // Act
-            sut.FirstName = "Fabio";
-            sut.LastName = "Oquendo";
-
             // Assert
             StringAssert.Matches(sut.FullName, new Regex("[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+"));
         }
 
         [TestMethod]
-        [TestCategory("Player Weapons")]
+        [PlayerWeapons]
         public void HaveALongBow()
         {
-            // Arrange
-            PlayerCharacter sut;
-
-            // Act
-            sut = new PlayerCharacter();
-
             // Assert
             CollectionAssert.Contains(sut.Weapons, "Long Bow");
         }
 
         [TestMethod]
-        [TestCategory("Player Weapons")]
+        [PlayerWeapons]
         public void NotHaveAStaffOfWonder()
         {
-            // Arrange
-            PlayerCharacter sut;
-
-            // Act
-            sut = new PlayerCharacter();
-
             // Assert
             CollectionAssert.DoesNotContain(sut.Weapons, "Staff of Wonder");
         }
 
         [TestMethod]
-        [TestCategory("Player Weapons")]
+        [PlayerWeapons]
         public void HaveAllExpectedWeapons()
         {
             // Arrange
-            PlayerCharacter sut;
             var expectedWeapons = new []
             {
                 "Long Bow",
@@ -245,19 +183,15 @@ namespace GameEngine.Test
                 "Short Sword"
             };
 
-            // Act
-            sut = new PlayerCharacter();
-
             // Assert
             CollectionAssert.AreEqual(sut.Weapons, expectedWeapons);
         }
 
         [TestMethod]
-        [TestCategory("Player Weapons")]
+        [PlayerWeapons]
         public void HaveAllExpectedWeapons_AnyOrder()
         {
             // Arrange
-            PlayerCharacter sut;
             var expectedWeapons = new[]
             {
                 "Short Bow",
@@ -265,53 +199,40 @@ namespace GameEngine.Test
                 "Long Bow"
             };
 
-            // Act
-            sut = new PlayerCharacter();
-
             // Assert
             CollectionAssert.AreEquivalent(sut.Weapons, expectedWeapons);
         }
 
         [TestMethod]
-        [TestCategory("Player Weapons")]
+        [PlayerWeapons]
         public void HaveNoDuplicateWeapons()
         {
-            // Arrange
-            PlayerCharacter sut;
-
-            // Act
-            sut = new PlayerCharacter();
-
             // Assert
             CollectionAssert.AllItemsAreUnique(sut.Weapons);
         }
 
         [TestMethod]
-        [TestCategory("Player Weapons")]
+        [PlayerWeapons]
         public void HaveAtLeastOneKindOfSword()
         {
-            // Arrange
-            PlayerCharacter sut;
-
-            // Act
-            sut = new PlayerCharacter();
-
             // Assert
-            Assert.IsTrue(sut.Weapons.Any(w => w.Contains("Sword")));
+            //Assert.IsTrue(sut.Weapons.Any(w => w.Contains("Sword")));
+            CollectionAssert.That.AtLeastOneItemSatisfy(sut.Weapons, w => w.Contains("Sword"));
         }
 
         [TestMethod]
-        [TestCategory("Player Weapons")]
+        [PlayerWeapons]
         public void HaveNoEmptyDefaultWeapons()
         {
-            // Arrange
-            PlayerCharacter sut;
-
-            // Act
-            sut = new PlayerCharacter();
-
             // Assert
-            Assert.IsFalse(sut.Weapons.Any(w => string.IsNullOrWhiteSpace(w)));
+            //Assert.IsFalse(sut.Weapons.Any(w => string.IsNullOrWhiteSpace(w)));
+            //CollectionAssert.That.AllItemsNotNullOrWhiteSpace(sut.Weapons);
+            //CollectionAssert.That.AllItemsSatisfy(sut.Weapons, w => !string.IsNullOrWhiteSpace(w));
+            CollectionAssert.That.All(sut.Weapons, w =>
+            {
+                StringAssert.That.NotNullOrWhiteSpace(w);
+                Assert.IsTrue(w.Length > 5);
+            });
         }
     }
 }
